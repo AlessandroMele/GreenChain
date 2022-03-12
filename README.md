@@ -1,6 +1,7 @@
-# Green-chain 
+# Green-chain (è DA MODIFICARE L'IMMAGINE NELL'IDENTIFICAZIONE DEGLI ATTACCHI. CI STANNO LE MISURE DI CONTROLLO CHE NON C'ENTRANO NIENTE; aggiustare anche la tabella delle misure di controllo che non si vede bene)
 
-Green-chain è un'applicazione che consente di inserire prodotti e materie prime all'interno di una blockchain costituita da 3 nodi, in modo da garantire una completa tracciabilità dei dati.
+Green-chain è un'applicazione che consente di inserire prodotti e materie prime all'interno di un catalogo implementato utilizzando una blockchain costituita da 3 nodi, in modo da garantire una completa tracciabilità dei dati. <br />
+La versione scaricabile è eseguibile solamente in Windows
 
 ## Prerequisiti
 
@@ -9,19 +10,21 @@ Green-chain è un'applicazione che consente di inserire prodotti e materie prime
 - [node.js](https://nodejs.org/it/download/) 
 
 Dopo aver installato Node.js sarà anche necessario scaricare le seguenti dipendenze:
-- truffle@5.4.29
+- truffle 
 - web3
-- chalk@2.4 
-- boxen@4.0
+- chalk
+- boxen
 - clear
 - clui
 - figlet
 - inquirer
 - @openzeppelin/contracts
+- assert
+- mocha
 
-Per far ciò basta posizionarsi nella cartella di progetto precedentemente scaricata, aprire il prompt di comando ed eseguire:
-
+Per far ciò basta posizionarsi nella cartella di progetto precedentemente scaricata, aprire il prompt di comando con privilegi di amministratore ed eseguire:
 ```bash
+npm install -g truffle@5.4.29
 npm install
 ```
 
@@ -29,10 +32,10 @@ npm install
 ## Installazione
 
 Avviare Docker-desktop e posizionarsi nella cartella di progetto precedentemente scaricata, aprire il prompt di comando ed eseguire:
+
 ```bash
-./start.cmd
+start.cmd
 ```
-Attendere qualche minuto affinchè il Docker Container si avvii correttamente, dopodichè eseguire:
 
 ```bash
 truffle deploy
@@ -40,10 +43,10 @@ truffle deploy
 
 Attendere finché l'operazione non va a buon fine (in caso di errore ripetere tale procedura).
 
-Fatto ciò, posizionarsi nella cartella "implementazione" e lanciare il comando:
+Fatto ciò, per poter avviare il programma basta lanciare il comando:
 
 ```bash
-node interfaccia.js
+npm start
 ```
 
 ## Utilizzo
@@ -55,15 +58,18 @@ Inizialmente gli account non hanno un ruolo, ma l'amministratore può decidere d
 
 Dopo aver selezionato l'account con cui procedere, è possibile scegliere una tra 8 operazioni possibili:
 - Transazioni:
-  - [Inserimento Attore](#inserimento-attore)
-  - [Inserimento Materia Prima](#inserimento-materia-prima)
-  - [Crea Prodotto](#crea-prodotto)
-  - [Trasferimento Risorsa](#trasferimento-risorsa)
-- Estrazione Informazioni:
+  - [Inserimento attore](#inserimento-attore)
+  - [Inserimento materia prima](#inserimento-materia-prima)
+  - [Crea prodotto](#crea-prodotto)
+  - [Trasferimento risorsa](#trasferimento-risorsa)
+- Estrazione dati:
   - [Possessore a partire dal Token](#possessore-a-partire-dal-token)
   - [Informazioni a partire dal Token](#informazioni-a-partire-dal-token)
   - [Informazioni a partire dal lotto](#informazioni-a-partire-dal-lotto)
   - [Informazioni a partire dal Nome](#informazioni-a-partire-dal-nome)
+- Altro
+  - [Logout](#logout)
+  - [Esci dal programma](#esci-dal-programma)
   
   
   
@@ -79,7 +85,7 @@ Se si vuole continuare con l'account corrente allora inserire "Y" o "y", altrime
 
 ### Inserimento Attore
 
-Operazione che fornisce una form in cui inserire l'account a cui assegnare il nuovo ruolo ed il ruolo stesso. 
+Operazione che fornisce una form in cui selezionare l'account a cui assegnare il nuovo ruolo (tra quelli disponibili) ed il ruolo stesso. 
 
 **Attenzione:** <br />
 ***Nel caso in cui si cerchi di assegnare un ruolo ad un attore che già lo ricopre, verrà fornito un messaggio di errore.*** <br />
@@ -96,7 +102,7 @@ Ciò comporta l'aggiunta di una nuova materia prima al catalogo, con un token ch
 
 ### Crea Prodotto
 
-Per ottenere un prodotto è necessario svolgere più attività ed utilizzare più materie prime. Alla luce di ciò quest'operazione richiede il numero di materie prime utilizzate ed il numero di attività svolte; successivamente fornisce una form in cui inserire nome e lotto del nuovo prodotto, più le informazioni relative alle attivita svolte (nome e consumo di CO2) e alle materie prime utilizzate (numero del lotto). <br />
+Per ottenere un prodotto è necessario svolgere una o più attività ed utilizzare una o più materie prime. Alla luce di ciò quest'operazione richiede il numero di materie prime utilizzate ed il numero di attività svolte; successivamente fornisce una form in cui inserire nome e lotto del nuovo prodotto, più le informazioni relative alle attivita svolte (nome e consumo di CO2) e alle materie prime utilizzate (numero del lotto). <br />
 Tale operazione va ad aggiungere un nuovo prodotto, contrassegnando le risorse utilizzate per produrlo come "tipologia: utilizzata" 
 
 **Attenzione:** <br />
@@ -107,8 +113,8 @@ Tale operazione va ad aggiungere un nuovo prodotto, contrassegnando le risorse u
 
 ### Trasferimento Risorsa
 
-Operazione che fornisce una form in cui inserire lotto della materia prima da trasferire e l'account destinatario. <br />
-In tal modo viene cambiato il possessore della materia prima
+Operazione che fornisce una form in cui inserire il lotto della risorsa da trasferire e l'account destinatario. <br />
+In tal modo viene cambiato il possessore della risorsa
 
 
 **Attenzione:** <br />
@@ -117,7 +123,7 @@ In tal modo viene cambiato il possessore della materia prima
 
  ### Possessore a partire dal Token
 
-Operazione che fornisce una form in cui inserire il token della materia prima/prodotto e restituisce l'address del possessore.
+Operazione che fornisce una form in cui inserire il token della risorsa e restituisce l'indirizzo del possessore.
 
 **Attenzione:** <br />
 ***Nel caso in cui il token inserito non appartenga ad un prodotto/materia prima presente nel catalogo, verrà fornito un messaggio di errore.*** <br />
@@ -125,7 +131,7 @@ Operazione che fornisce una form in cui inserire il token della materia prima/pr
 
 ### Informazioni a partire dal Token
 
-Operazione che fornisce una form in cui inserire il token della materia prima/prodotto e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
+Operazione che fornisce una form in cui inserire il token della risorsa e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
 
 **Attenzione:** <br />
 ***Nel caso in cui il token inserito non appartenga ad un prodotto/materia prima presente nel catalogo, verrà fornito un messaggio di errore.*** <br />
@@ -133,7 +139,7 @@ Operazione che fornisce una form in cui inserire il token della materia prima/pr
 
 ### Informazioni a partire dal Lotto
 
-Operazione che fornisce una form in cui inserire il lotto della materia prima/prodotto e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
+Operazione che fornisce una form in cui inserire il lotto della risorsa e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
 
 **Attenzione:** <br />
 ***Nel caso in cui il lotto inserito non appartenga ad un prodotto/materia prima presente nel catalogo, verrà fornito un messaggio di errore.*** <br />
@@ -141,12 +147,20 @@ Operazione che fornisce una form in cui inserire il lotto della materia prima/pr
 
 ### Informazioni a partire dal Nome
 
-Operazione che fornisce una form in cui inserire il nome della materia prima/prodotto e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
+Operazione che fornisce una form in cui inserire il nome della risorsa e ne restituisce le informazioni: nome, lotto, CO2, tipologia (materia prima, prodotto trasformato, utilizzata), lotti materie prime utilizzate per la produzione (nel caso in cui venga restituito un prodotto trasformato) e token.
 Poiché più materie prime/prodotti possono avere lo stesso nome, tale operazione fornirà tutte le risorse che rispettano i criteri di ricerca, attraverso una lista 
 
 **Attenzione:** <br /> 
 ***Nel caso in cui il nome inserito non appartenga ad un prodotto/materia prima presente nel catalogo, verrà fornito un messaggio di errore.*** <br />
 
+### Logout
+
+Operazione attraverso la quale è possibile disconnettersi dall'account corrente e tornare alla schermata di selezione degli account disponibili.
+
+
+### Esci dal programma
+
+Operazione attraverso la quale è possibile terminare il programma.
 
 
  ## Problematiche
