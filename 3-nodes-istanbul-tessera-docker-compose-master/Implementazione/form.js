@@ -13,7 +13,7 @@ const validatore_nome = function(value) {
     } else {
         return 'Inserire un nome con meno di 32 caratteri';
     }
-}
+};
 
 
 // funzione per la validazione dei lotti e dei token
@@ -26,7 +26,7 @@ const validatore_lotto = function(value) {
     } else {
         return 'Inserire un intero > 0 e minore di 2^256-1';
     }
-}
+};
 
 
 
@@ -39,7 +39,7 @@ const validatore_CO2 = function(value) {
     } else {
         return 'Inserire un intero positivo a 32 bit';
     }
-}
+};
 
 //////////////////////////// FORM TRANSAZIONI ////////////////////////////////
 
