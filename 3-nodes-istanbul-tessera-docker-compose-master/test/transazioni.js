@@ -2,9 +2,6 @@ const Call = require("../Implementazione/call");
 const Send = require("../Implementazione/send");
 const assert = require("assert");
 
-
-
-
 describe("Inserimento attore", async function () {
 
   let estrazione = new Call();
