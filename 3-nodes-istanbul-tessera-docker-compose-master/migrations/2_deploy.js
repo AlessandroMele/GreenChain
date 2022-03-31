@@ -9,4 +9,4 @@ deployer.link(footprint,gestore);
 deployer.deploy(generica);
 deployer.link(generica,gestore);
 deployer.deploy(gestore);
-}
+};
