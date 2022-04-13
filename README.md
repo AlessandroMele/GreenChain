@@ -1,6 +1,5 @@
 # Green-chain 
 Green-chain è un'applicazione che consente di inserire prodotti e materie prime all'interno di un catalogo implementato utilizzando una blockchain costituita da 3 nodi, in modo da garantire una completa tracciabilità dei dati. <br />
-La versione scaricabile è eseguibile solamente in Windows
 
 ## Prerequisiti
 
@@ -30,10 +29,10 @@ npm install
 
 ## Installazione
 
-Avviare Docker-desktop e posizionarsi nella cartella di progetto precedentemente scaricata, aprire il prompt di comando ed eseguire:
+Avviare Docker-desktop e posizionarsi nella cartella di progetto precedentemente scaricata, aprire il terminale ed eseguire:
 
 ```bash
-start.cmd
+./start.sh
 ```
 
 ```bash
@@ -165,6 +164,3 @@ Operazione attraverso la quale è possibile terminare il programma.
  ## Problematiche
  
  Nel caso in cui siano presenti dei bug siete pregati di segnalarli aprendo un Issue, prenderemo in esame la richiesta il prima possibile.
- 
- 
- 
